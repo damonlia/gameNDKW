@@ -1,0 +1,1 @@
+/usr/bin/c++   -g   CMakeFiles/game.dir/main.cpp.o CMakeFiles/game.dir/Postac.cpp.o CMakeFiles/game.dir/Funkcje.cpp.o CMakeFiles/game.dir/Pocisk.cpp.o CMakeFiles/game.dir/Potwor.cpp.o CMakeFiles/game.dir/LVL.cpp.o  -o game -lSDL -lSDL_image -lSDL -lSDL_mixer -lSDL -lSDL_ttf -lSDL -lSDL_image -lSDL_mixer -lSDL_ttf 
