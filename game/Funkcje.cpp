@@ -40,7 +40,7 @@ SDL_Surface *laduj_obraz(std::string nazwa_pliku )
     }
     if( optymalnyObraz != NULL )
     {
-        Uint32 kluczKoloru = SDL_MapRGB(optymalnyObraz->format,0xFF,0x00,0xFF);
+        Uint32 kluczKoloru = SDL_MapRGB(optymalnyObraz->format,0xFF,0x00,0xFF); // niewidzialne
         SDL_SetColorKey(optymalnyObraz, SDL_SRCCOLORKEY, kluczKoloru);
     }
     return optymalnyObraz;
@@ -57,23 +57,18 @@ void wyswietl(int x, int y, SDL_Surface *zrodlo, SDL_Surface *cel)
 }
 
 Uint32 get_pixel32(SDL_Surface *powierzchnia, int x, int y) {
-    //Zmiana pikseli na format 32 bitowy
     Uint32 *pixels = (Uint32 *) powierzchnia->pixels;
-    //Pobiera wskazany pixel
     return pixels[(y * powierzchnia->w) + x];
 }
 
 void put_pixel32(SDL_Surface *powierzchnia, int x, int y, Uint32 piksel) {
-    //Zmiana pikseli na format 32 bitowy
     Uint32 *piksele = (Uint32 *) powierzchnia->pixels;
-    //Ustawia wskazany pixel
+    // wskazany pixel
     piksele[(y * powierzchnia->w) + x] = piksel;
 }
 
 SDL_Surface *odwroc(SDL_Surface *powierzchnia, int flagi) {
-    //Wskaznik na powierzchnie do ktorej odwrocimy obrazek
     SDL_Surface *odwrocony = NULL;
-    //Jesli obrazek ma kluczowanie koloru
     if (powierzchnia->flags & SDL_TRUE)
         odwrocony = SDL_CreateRGBSurface(SDL_SWSURFACE, powierzchnia->w, powierzchnia->h,
                                          powierzchnia->format->BitsPerPixel, powierzchnia->format->Rmask,
@@ -85,15 +80,14 @@ SDL_Surface *odwroc(SDL_Surface *powierzchnia, int flagi) {
                                          powierzchnia->format->Gmask, powierzchnia->format->Bmask,
                                          powierzchnia->format->Amask);
 
-    //Jesli trzeba powierzchnie zablokowac
+    //  powierzchnie zablokowac
     if (SDL_MUSTLOCK(powierzchnia))
         SDL_LockSurface(powierzchnia);
 
-    //Kolumny
+
     for (int x = 0, rx = odwrocony->w - 1; x < odwrocony->w; x++, rx--) {
-        //Wiersze
+
         for (int y = 0, ry = odwrocony->h - 1; y < odwrocony->h; y++, ry--) {
-            //Pobierz pixel
             Uint32 pixel = get_pixel32(powierzchnia, x, y);
             //Kopiowanie pixela
             if ((flagi & PIONOWO) && (flagi & POZIOMO))
@@ -107,10 +101,10 @@ SDL_Surface *odwroc(SDL_Surface *powierzchnia, int flagi) {
     //Odblokowanie powierzchni
     if (SDL_MUSTLOCK(powierzchnia))
         SDL_UnlockSurface(powierzchnia);
-    //Kopiujemy klucz koloru
+    //Kopiujemy klucz koloru//////////////////////////////////////// chyba nie bd potrzebne
     if (powierzchnia->flags & SDL_TRUE)
         SDL_SetColorKey(odwrocony, SDL_RLEACCEL | SDL_TRUE, SDL_MapRGB(powierzchnia->format, 0, 0xFF, 0xFF));
-    //Zwracamy odwrocona powierzchnie
+
     return odwrocony;
 }
 
@@ -126,7 +120,7 @@ int inicjalizuj() {
     if (TTF_Init() == -1)
         return false;
 
-    // SDL_WM_SetCaption( "Platformowka", NULL );
+    // SDL_WM_SetCaption( "Gra", NULL );
 
     return true;
 }

@@ -13,6 +13,7 @@ private:
     int plansza[255][17];
     string nazwa_poziomu;
 
+    Potwor *potwory[5];
     int ile_potworow;
 
     //Dane, pobierane z pliku:

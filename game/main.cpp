@@ -19,7 +19,7 @@ int main( )
     if(laduj_pliki() == false)
         return 1;
 
-    Postac postac;
+    Postac Kapitan;
     Level.ladowanie();
     laduj_pliki();
 
@@ -36,7 +36,7 @@ int main( )
                     zakonczyc=true;
         }
         Level.pokaz();
-        postac.pokaz();
+        Kapitan.pokaz();
 
         wyswietl(0,540,menu,ekran);
 
@@ -46,6 +46,7 @@ int main( )
         }
 
         wyswietl(0,540,menu,ekran);
+
         if(ZYCIA<1)
         {
             nowy_komunikat("Game Over!", 80);
@@ -69,17 +70,17 @@ int main( )
         wyswietl(500,550, pklucze, ekran);
 
         //Wyrownanie scrolla:
-        SCROLL=postac.polozenie()-0.5*EKRAN_SZEROKOSC;
+        SCROLL=Kapitan.polozenie()-0.5*EKRAN_SZEROKOSC;
         if(SCROLL<0)
             SCROLL=0;
         if(SCROLL>PLANSZA_SZEROKOSC*32-EKRAN_SZEROKOSC)
             SCROLL=PLANSZA_SZEROKOSC*32-EKRAN_SZEROKOSC;
 
         klawisze = SDL_GetKeyState( NULL );
-        if(postac.akcja(klawisze)) //Kolejny LVL
+        if(Kapitan.akcja(klawisze)) //Kolejny LVL
         {
             nowy_komunikat("Kolejny poziom!", 80);
-            postac = Postac();
+            Kapitan = Postac();
             Level = LVL("LVL2");
             Level.ladowanie();
         }

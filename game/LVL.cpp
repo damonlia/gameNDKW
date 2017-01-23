@@ -9,9 +9,9 @@
 
 LVL::LVL(string nazwa) {
     nazwa_poziomu = nazwa;
-    nazwa+=".txt";
+    nazwa += ".txt";
     nazwa = nazwa_poziomu + "/" + nazwa;
-    ile_potworow=0;
+    ile_potworow = 0;
 
     KLUCZE = 0;
 
@@ -24,17 +24,17 @@ LVL::LVL(string nazwa) {
     {
         //cout<<" weszlo do pliku"<<endl;
         plik.getline(bufor,255);
-        numer= atoi(bufor);
+        numer = atoi(bufor);
 
         plik.getline(bufor,255);
         nazwa = bufor;
 
         plik.getline(bufor,255,';');
-        zycia= atoi(bufor);
-        ZYCIA=zycia;
+        zycia = atoi(bufor);
+        ZYCIA =zycia;
 
         plik.getline(bufor,255,';');
-        szerokosc= atoi(bufor);
+        szerokosc = atoi(bufor);
 
         for(int y=0 ; y<17 ; y++)
         {
@@ -98,7 +98,13 @@ void LVL::pokaz() {
     if(-SCROLL*0.6+middle->w < EKRAN_SZEROKOSC)
         wyswietl(-SCROLL*0.6+middle->w,400,middle,ekran);
 
-
+    for(int i=0; i <ile_potworow; i++) {
+        if(potwory[i]->czy_zyje()==true)
+        {
+            potwory[i]->akcja();
+            potwory[i]->pokaz();
+        }
+    }
 
     wyswietl(0,0,tlo_mapy,ekran);
 
@@ -140,6 +146,10 @@ void LVL::pokaz() {
                         else
                             break;
                     }
+
+                    potwory[ile_potworow]= new Potwor(x*32,y*32, min*32,max*32);
+                    ile_potworow++;
+                    plansza[x][y]=NIC;
                 }
             }
 
@@ -165,8 +175,17 @@ void LVL::pokaz() {
 
 int LVL::wez(int x, int y) {
 
+    for(int i=0; i <ile_potworow; i++) {
+        if(potwory[i]->czy_dopadl(x,y)==true) {
+            potwory[i]->gin();
+            //delete potwory[i];
+            ZYCIA--;
+        }
+    }
+
     x=x/32;
     y/=32;
+
     if(plansza[x][y]==GWIAZDKA)
     {
         plansza[x][y]=NIC;
