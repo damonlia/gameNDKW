@@ -3,8 +3,8 @@ project(game)
 
 set(CMAKE_CXX_STANDARD 11)
 
-set(SOURCE_FILES main.cpp Postac.cpp Funkcje.cpp LVL.cpp)
-add_executable(game ${SOURCE_FILES} )
+set(SOURCE_FILES main.cpp Postac.cpp Funkcje.cpp Pocisk.cpp Potwor.cpp LVL.cpp)
+add_executable(game ${SOURCE_FILES})
 
 INCLUDE(FindPkgConfig)
 

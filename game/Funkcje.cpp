@@ -16,6 +16,7 @@ SDL_Surface *pgwiazdki =NULL;
 SDL_Surface *ekran = NULL;
 TTF_Font *czcionka = NULL;
 LVL Level;
+Pocisk stargun;
 
 
 SDL_Surface *tlo_komunikatu = NULL;

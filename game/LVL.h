@@ -2,6 +2,7 @@
 // Created by lili on 22.01.17.
 //
 #include "libraries.h"
+#include "Potwor.h"
 #ifndef GAME_LVL_H
 #define GAME_LVL_H
 

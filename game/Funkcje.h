@@ -38,7 +38,7 @@
     extern   int KLUCZE;
     extern   int GWIAZDKI;
 
-
+    extern Pocisk stargun;
     extern  LVL Level;
 
     SDL_Surface *laduj_obraz(std::string nazwa_pliku );

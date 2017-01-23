@@ -40,6 +40,12 @@ int main( )
 
         wyswietl(0,540,menu,ekran);
 
+        if(stargun.czy_istnieje()){
+            stargun.akcja();
+            stargun.pokaz();
+        }
+
+        wyswietl(0,540,menu,ekran);
         if(ZYCIA<1)
         {
             nowy_komunikat("Game Over!", 80);
