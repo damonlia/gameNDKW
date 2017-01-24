@@ -24,6 +24,7 @@ int CZAS_KOMUNIKATU = 0;
 SDL_Surface *tresc_komunikatu = NULL;
 SDL_Color kolortekstu = {0,0,0};
 
+Mix_Music* music;
 
 SDL_Surface *laduj_obraz(std::string nazwa_pliku )
 {
@@ -133,6 +134,11 @@ int laduj_pliki() {
     tlo_komunikatu = laduj_obraz("Dane/tlo_komunikat.bmp");
 
     menu = laduj_obraz("Dane/menu.bmp");
+
+    Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT,2,4096);
+    music = Mix_LoadMUS("mario.wav");
+    Mix_PlayMusic(music,-1);
+
     return true;
 }
 
