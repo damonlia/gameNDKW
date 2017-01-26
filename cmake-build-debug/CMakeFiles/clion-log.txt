@@ -1,1 +1,4 @@
-CMakeLists.txt not found in /home/lili/Dokumenty/game
+/home/lili/Dokumenty/clion-2016.3.2/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lili/game
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lili/game/cmake-build-debug
