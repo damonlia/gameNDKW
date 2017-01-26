@@ -81,9 +81,6 @@ SDL_Surface *odwroc(SDL_Surface *powierzchnia, int flagi) {
                                          powierzchnia->format->Gmask, powierzchnia->format->Bmask,
                                          powierzchnia->format->Amask);
 
-    //powierzchnie zablokowac
-    if (SDL_MUSTLOCK(powierzchnia))
-        SDL_LockSurface(powierzchnia);
 
     for (int x = 0, rx = odwrocony->w - 1; x < odwrocony->w; x++, rx--) {
 
@@ -100,13 +97,6 @@ SDL_Surface *odwroc(SDL_Surface *powierzchnia, int flagi) {
         }
     }
 
-
-    if (SDL_MUSTLOCK(powierzchnia))
-        SDL_UnlockSurface(powierzchnia);
-
-    if (powierzchnia->flags & SDL_TRUE){
-        SDL_SetColorKey(odwrocony, SDL_RLEACCEL | SDL_TRUE, SDL_MapRGB(powierzchnia->format, 0xFF, 0x00, 0xFF));
-    }
 
 
     return odwrocony;

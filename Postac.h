@@ -11,6 +11,7 @@ class Postac {
 private:
     SDL_Surface *neutralna;
 //SDL_Surface *klatka[3];
+    Uint32 kluczKoloru;
     int x,y;
     int sklatka;
     int ile_skokow;

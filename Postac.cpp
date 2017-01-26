@@ -18,6 +18,7 @@ Postac::Postac() {
     sklatka=0;
     ile_skokow=0;
     kierunek = PRAWO; //Nowe
+    kluczKoloru = SDL_MapRGB(neutralna->format,0xFF,0x00,0xFF);
 }
 
 int Postac::pokaz() {
@@ -50,6 +51,7 @@ int Postac::akcja( Uint8 *klawisze) {
             neutralna=odwroc(neutralna,POZIOMO);
         ruch(LEWO,2);
         kierunek=LEWO;
+  SDL_SetColorKey(neutralna, SDL_SRCCOLORKEY, kluczKoloru);
     }
 
     if(klawisze[SDLK_RIGHT]) {
@@ -57,6 +59,7 @@ int Postac::akcja( Uint8 *klawisze) {
             neutralna=odwroc(neutralna,POZIOMO);
         ruch(PRAWO,2);
         kierunek=PRAWO;
+  SDL_SetColorKey(neutralna, SDL_SRCCOLORKEY, kluczKoloru);
     }
 
     if(klawisze[SDLK_SPACE] && ! stargun.czy_istnieje()) {

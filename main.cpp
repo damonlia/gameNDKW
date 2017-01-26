@@ -8,6 +8,7 @@ SDL_Event zdarzenie;
 
 int main( )
 {
+    int poziom = 0;
     bool zakonczyc=false;
 
     if(inicjalizuj() == false)
@@ -70,11 +71,17 @@ int main( )
             SCROLL=PLANSZA_SZEROKOSC*32-EKRAN_SZEROKOSC;
 
         klawisze = SDL_GetKeyState( NULL );
+
         if(Kapitan.akcja(klawisze)) {   // kolejny level
-            nowy_komunikat("Kolejny poziom!", 80);
-            Kapitan = Postac();
-            Level = LVL("LVL2");
-            Level.ladowanie();
+           if(poziom == 1){
+                nowy_komunikat("Wygrales!", 80);
+            } else {
+                nowy_komunikat("Kolejny poziom!", 80);
+                Kapitan = Postac();
+                Level = LVL("LVL2");
+                Level.ladowanie();
+                poziom++;
+            }
         }
 
 

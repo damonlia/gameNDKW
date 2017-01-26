@@ -68,3 +68,7 @@ bool Pocisk::czy_istnieje() {
     else
         return false;
 }
+
+void Pocisk::ukryjPocisk() {
+    istnieje = false;
+}

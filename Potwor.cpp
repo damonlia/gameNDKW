@@ -53,9 +53,11 @@ void Potwor::akcja() {
     if(x<obszar_lewo)
         kierunek=PRAWO;
 
-    if(stargun.czy_istnieje())
-        if(czy_trafil(stargun.pozycja_x(),stargun.pozycja_y()))
+  if(stargun.czy_istnieje())
+        if(czy_trafil(stargun.pozycja_x(),stargun.pozycja_y())){
             gin();
+            stargun.ukryjPocisk();
+        }
 }
 
 

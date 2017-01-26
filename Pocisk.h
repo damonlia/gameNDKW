@@ -21,6 +21,7 @@ public:
     void akcja();
     void pokaz();
     bool czy_istnieje();
+void ukryjPocisk();
 };
 
 
